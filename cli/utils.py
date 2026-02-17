@@ -160,6 +160,13 @@ def select_shallow_thinking_agent(provider) -> str:
             ("GPT-OSS:latest (20B, local)", "gpt-oss:latest"),
             ("GLM-4.7-Flash:latest (30B, local)", "glm-4.7-flash:latest"),
         ],
+        "bedrock": [
+            ("Claude Sonnet 4 - High-performance", "us.anthropic.claude-sonnet-4-20250514-v1:0"),
+            ("Claude 3.5 Haiku - Fast + cost-effective", "us.anthropic.claude-3-5-haiku-20241022-v1:0"),
+            ("Amazon Nova Lite - Fast, low-cost", "us.amazon.nova-lite-v1:0"),
+            ("Amazon Nova Micro - Ultra-fast", "us.amazon.nova-micro-v1:0"),
+            ("Llama 3.3 70B - Open-source", "us.meta.llama3-3-70b-instruct-v1:0"),
+        ],
     }
 
     choice = questionary.select(
@@ -228,6 +235,13 @@ def select_deep_thinking_agent(provider) -> str:
             ("GPT-OSS:latest (20B, local)", "gpt-oss:latest"),
             ("Qwen3:latest (8B, local)", "qwen3:latest"),
         ],
+        "bedrock": [
+            ("Claude Sonnet 4 - High-performance", "us.anthropic.claude-sonnet-4-20250514-v1:0"),
+            ("Claude Opus 4 - Premium intelligence", "us.anthropic.claude-opus-4-20250514-v1:0"),
+            ("Claude 3.5 Sonnet - Balanced", "us.anthropic.claude-3-5-sonnet-20241022-v2:0"),
+            ("Amazon Nova Pro - Capable multimodal", "us.amazon.nova-pro-v1:0"),
+            ("Llama 3.3 70B - Open-source", "us.meta.llama3-3-70b-instruct-v1:0"),
+        ],
     }
 
     choice = questionary.select(
@@ -260,6 +274,7 @@ def select_llm_provider() -> tuple[str, str]:
         ("Google", "https://generativelanguage.googleapis.com/v1"),
         ("Anthropic", "https://api.anthropic.com/"),
         ("xAI", "https://api.x.ai/v1"),
+        ("Bedrock", ""),
         ("Openrouter", "https://openrouter.ai/api/v1"),
         ("Ollama", "http://localhost:11434/v1"),
     ]

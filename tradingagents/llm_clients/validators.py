@@ -63,17 +63,32 @@ VALID_MODELS = {
         "grok-4-fast-reasoning",
         "grok-4-fast-non-reasoning",
     ],
+    "bedrock": [
+        # Anthropic Claude on Bedrock (cross-region inference profiles)
+        "us.anthropic.claude-sonnet-4-20250514-v1:0",
+        "us.anthropic.claude-opus-4-20250514-v1:0",
+        "us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+        "us.anthropic.claude-3-5-haiku-20241022-v1:0",
+        # Amazon Nova
+        "us.amazon.nova-pro-v1:0",
+        "us.amazon.nova-lite-v1:0",
+        "us.amazon.nova-micro-v1:0",
+        # Meta Llama
+        "us.meta.llama3-3-70b-instruct-v1:0",
+        # Mistral
+        "mistral.mistral-large-2407-v1:0",
+    ],
 }
 
 
 def validate_model(provider: str, model: str) -> bool:
     """Check if model name is valid for the given provider.
 
-    For ollama, openrouter - any model is accepted.
+    For ollama, openrouter, bedrock - any model is accepted (custom/fine-tuned models).
     """
     provider_lower = provider.lower()
 
-    if provider_lower in ("ollama", "openrouter"):
+    if provider_lower in ("ollama", "openrouter", "bedrock"):
         return True
 
     if provider_lower not in VALID_MODELS:

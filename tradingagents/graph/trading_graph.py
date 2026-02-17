@@ -145,6 +145,14 @@ class TradingAgentsGraph:
             if reasoning_effort:
                 kwargs["reasoning_effort"] = reasoning_effort
 
+        elif provider == "bedrock":
+            profile = self.config.get("aws_credentials_profile")
+            if profile:
+                kwargs["credentials_profile_name"] = profile
+            region = self.config.get("aws_region")
+            if region:
+                kwargs["region_name"] = region
+
         return kwargs
 
     def _create_tool_nodes(self) -> Dict[str, ToolNode]:
